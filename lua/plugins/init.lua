@@ -62,6 +62,19 @@ return require('packer').startup(function(use)
         require('plugins.treesitter') 
       end
   }
+  use {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
+      setup = function()
+          vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      config = function()
+          vim.g.mkdp_filetypes = { "markdown" }
+          vim.g.mkdp_auto_start = 1
+      end,
+      ft = { "markdown" },
+  }
+
     
   -- навигация по файлам, fzf, работа с буферами и многое другое
   -- если больше привыкли к файловому дереву, есть альтернатива - nvim-tree

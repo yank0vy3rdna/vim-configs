@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
   map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   map('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts)
-  map('n', '<leader>fmt', vim.lsp.buf.formatting, bufopts)
+  map('n', '<leader>fmt', vim.lsp.buf.format, bufopts)
 end
 
 -- инициализация LSP для различных ЯП
@@ -54,8 +54,7 @@ lspconfig.gopls.setup(config({
   root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
   settings = {
     gopls = {
-      buildFlags =  {"-tags=ybts"},
-      --buildFlags =  {"-tags=ybsc"},
+      buildFlags =  {"-tags=include_bpf"},
       analyses = {
         unusedparams = true,
         shadow = true,
